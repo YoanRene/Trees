@@ -1,4 +1,4 @@
 # Trees
-Is code dedicated to help about trees and binary search trees
+It is code dedicated to help people about trees and binary search trees
 
 							Thanks ;)
