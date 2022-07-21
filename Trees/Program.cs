@@ -27,6 +27,24 @@ class BinarySearchTree<T> where T : IComparable
         BinarySearchTree<T> tree = new BinarySearchTree<T>(items[mid], left, right);
         return tree;
     }
+    public IEnumerable<BinarySearchTree<T>> Inorden()
+    {
+        if (left != null)
+        {
+            foreach (var item in left.Inorden())
+            {
+                yield return item;
+            }
+        }
+        yield return this;
+        if(right != null)
+        {
+            foreach (var item in right.Inorden())
+            {
+                yield return item;
+            }
+        }
+    }
     public bool Contains(T valueToFind)
     {
         if (value.Equals(valueToFind))
@@ -191,6 +209,10 @@ class Program
         //Console.WriteLine(tree.Diametrer());
         //Console.WriteLine(tree.NearestCommonAncestor(tree1,tree4));
         BinarySearchTree<int> searchTree = BinarySearchTree<int>.ArrayToTree(new int[] { 1, 2, 3 ,4,5,6,7,8});
-        Console.WriteLine(searchTree.Contains(6));
+        //Console.WriteLine(searchTree.Contains(6));
+        foreach (var item in searchTree.Inorden())
+        {
+            Console.WriteLine(item);
+        }
     }
 }
